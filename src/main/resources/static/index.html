@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <div id="msg"></div>
+
+    <h1>Gestão de Produtos de Limpeza</h1>
+
+    <div class="menu">
+        <button class="btn-aba ativo" onclick="mudarAba('aba-produtos', this)">Cadastro de Produtos</button>
+        <button class="btn-aba" onclick="mudarAba('aba-estoques', this)">Estoque dos Produtos</button>
+        <button class="btn-aba" onclick="mudarAba('aba-gestores', this)">Gestores</button>
+    </div>
+
+    <!-- TELA CADASTRO DE PRODUTOS -->
+    <div id="aba-produtos" class="aba-conteudo ativa">
+        <div class="card">
+            <h2>Novo Produto</h2>
+            <form id="form-produto">
+                <div class="grupo"><label>Nome</label><input type="text" id="prod-nome" required></div>
+                <div class="grupo">
+                    <label>Tipo</label>
+                    <select id="prod-tipo" required>
+                        <option value="">Selecione...</option>
+                        <option value="PRODUTO">Produto (Consumível)</option>
+                        <option value="FERRAMENTA">Ferramenta / Equipamento</option>
+                    </select>
+                </div>
+                <div class="grupo"><label>Qtde Mínima</label><input type="number" id="prod-min" required></div>
+                <div class="grupo"><label>Qtde Máxima</label><input type="number" id="prod-max" required></div>
+                <div class="grupo"><label>Senha do Gestor (Para confirmar)</label><input type="password" id="prod-senha" required></div>
+                <button type="submit" class="btn btn-salvar">Cadastrar Produto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TELA ESTOQUE -->
+    <div id="aba-estoques" class="aba-conteudo">
+        <div class="card">
+            <h2>Atualizar Quantidade em Estoque</h2>
+            <form id="form-estoque" style="display: flex; gap: 15px; align-items: flex-end; margin-bottom: 20px;">
+                <div style="flex:1;"><label>Produto</label><select id="est-produto" required></select></div>
+                <div style="flex:1;"><label>Gestor Responsável</label><select id="est-gestor" required></select></div>
+                <div style="flex:1;"><label>Nova Qtde Atual</label><input type="number" id="est-qtde" required></div>
+                <button type="submit" class="btn btn-salvar" style="margin-top: 0; width: 120px;">Atualizar</button>
+            </form>
+
+            <table class="tabela">
+                <thead>
+                <tr>
+                    <th>Nome Produto</th>
+                    <th>Qtde Mínima</th>
+                    <th>Qtde Máxima</th>
+                    <th>Qtde Atual</th>
+                    <th>Última Atualização</th>
+                </tr>
+                </thead>
+                <tbody id="tb-estoques"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TELA GESTORES -->
+    <div id="aba-gestores" class="aba-conteudo">
+        <div class="card">
+            <h2>Adicionar Gestor</h2>
+            <form id="form-gestor" style="display: flex; gap: 15px; align-items: flex-end; margin-bottom: 20px;">
+                <div style="flex:1;"><label>Nome</label><input type="text" id="gest-nome" required></div>
+                <div style="flex:1;"><label>Email</label><input type="email" id="gest-email" required></div>
+                <div style="flex:1;"><label>Senha</label><input type="password" id="gest-senha" required></div>
+                <button type="submit" class="btn btn-salvar" style="margin-top: 0; width: auto;">+ Adicionar Gestor</button>
+            </form>
+
+            <table class="tabela">
+                <thead><tr><th>Nome</th><th>Email</th><th>Ações</th></tr></thead>
+                <tbody id="tb-gestores"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
