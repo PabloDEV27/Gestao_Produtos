@@ -2,6 +2,8 @@ package com.gestao.produtoslimpeza.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,9 +14,13 @@ public class Produto {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank
     private String nome;
+    @NotNull
     private int qtde;
+    @NotNull
     private int qtdeMinima;
+    @NotNull
     private int qtdeMaxima;
     @jakarta.persistence.Enumerated(EnumType.STRING)
     private TipoProduto tipo;
